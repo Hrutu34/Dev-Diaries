@@ -31,3 +31,6 @@ target/
 
 # OS
 Thumbs.db
+
+# Angular cache
+.angular/
