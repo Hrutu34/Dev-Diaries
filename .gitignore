@@ -1,0 +1,33 @@
+# Git ignore patterns
+node_modules/
+dist/
+out-tsc/
+.env
+.env.local
+.DS_Store
+*.log
+*.swp
+*.swo
+*~
+
+# IDEs
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Java
+target/
+*.jar
+*.war
+*.ear
+.classpath
+.project
+.settings/
+
+# MongoDB
+*.db
+*.log
+
+# OS
+Thumbs.db

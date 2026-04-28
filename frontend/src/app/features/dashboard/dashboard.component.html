@@ -1,0 +1,61 @@
+<div class="min-h-screen bg-gray-100">
+  <!-- Header/Navbar -->
+  <nav class="bg-white shadow">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between h-16">
+        <div class="flex items-center">
+          <h1 class="text-2xl font-bold text-gray-900">Dev-Diaries</h1>
+        </div>
+        <div class="flex items-center space-x-4">
+          <span class="text-gray-700" *ngIf="user">
+            Welcome, {{ user.firstName }} {{ user.lastName }}
+          </span>
+          <button
+            (click)="logout()"
+            class="bg-red-600 text-white px-4 py-2 rounded-md hover:bg-red-700 transition"
+          >
+            Logout
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <!-- Welcome Card -->
+      <div class="md:col-span-3 bg-white rounded-lg shadow p-6">
+        <h2 class="text-3xl font-bold text-gray-900 mb-2">Welcome to Dev-Diaries</h2>
+        <p class="text-gray-600">
+          Your personal journaling companion. Start documenting your thoughts, ideas, and memories.
+        </p>
+      </div>
+
+      <!-- Feature Cards (Week 1 - Coming Soon) -->
+      <div class="bg-white rounded-lg shadow p-6">
+        <h3 class="text-lg font-semibold text-gray-900 mb-2">New Entry</h3>
+        <p class="text-gray-600 mb-4">Create a new journal entry</p>
+        <button class="w-full bg-indigo-600 text-white py-2 rounded-md hover:bg-indigo-700 transition">
+          Create Entry
+        </button>
+      </div>
+
+      <div class="bg-white rounded-lg shadow p-6">
+        <h3 class="text-lg font-semibold text-gray-900 mb-2">My Entries</h3>
+        <p class="text-gray-600 mb-4">View all your journal entries</p>
+        <button class="w-full bg-indigo-600 text-white py-2 rounded-md hover:bg-indigo-700 transition">
+          View Entries
+        </button>
+      </div>
+
+      <div class="bg-white rounded-lg shadow p-6">
+        <h3 class="text-lg font-semibold text-gray-900 mb-2">Settings</h3>
+        <p class="text-gray-600 mb-4">Manage your account settings</p>
+        <button class="w-full bg-indigo-600 text-white py-2 rounded-md hover:bg-indigo-700 transition">
+          Settings
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

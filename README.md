@@ -1,154 +1,289 @@
-# Dev-Diaries WebApp
+# Dev-Diaries WebApp - Week 1 Implementation
 
-A quick, modern, secure, and elegant web application for writing and managing daily personal journal entries. Built with a focus on clean UX, privacy, and scalability, this app allows users to document their thoughts, track moods, and revisit memories in a structured digital format.
+A quick, modern, secure, and elegant web application for writing and managing daily personal journal entries.
 
----
+## 🚀 Quick Start
 
-## Features
+### Backend (Java Spring Boot)
+```bash
+cd backend
+mvn spring-boot:run
+# Runs on http://localhost:8080
+```
 
-### Authentication
-- User Signup & Login
-- Secure password hashing
-- JWT-based session management
-- Optional OAuth (Google login)
+### Frontend (Angular)
+```bash
+cd frontend
+npm install
+npm start
+# Runs on http://localhost:4200
+```
 
----
-
-### Diary Management
-- Create, edit, and delete entries
-- Rich text editor support
-- Auto-save drafts
-- Tagging system for categorization
-
----
-
-### Organization & Navigation
-- Calendar-based view of entries
-- Timeline of daily logs
-- Filter by tags, moods, or date
+**📖 For detailed setup instructions, see [PROJECT_SETUP.md](PROJECT_SETUP.md)**
 
 ---
 
-### Search & Insights
-- Full-text search across entries
-- Mood tracking per entry
-- Weekly/monthly summaries (future scope)
+## Week 1: Authentication & Basic UI ✅
 
----
+### ✅ Backend Implementation
+- User signup with email, username, password validation
+- Secure login with password hashing (BCrypt)
+- JWT token generation & validation
+- Global exception handling
+- CORS configuration for frontend
+- MongoDB integration
 
-### UI/UX
-- Minimal, distraction-free writing interface
-- Dark / Light mode
-- Responsive design (mobile-friendly)
-- Smooth animations and transitions
+**Endpoints:**
+- `POST /api/auth/signup` - Register new user
+- `POST /api/auth/login` - Login user
+- `GET /api/auth/health` - Health check
 
----
+### ✅ Frontend Implementation
+- Responsive signup form with validation
+- Clean login interface
+- Protected dashboard page
+- JWT token management in localStorage
+- Auto-inject JWT to API requests
+- User logout functionality
+- Tailwind CSS styling
 
-### Optional Enhancements
-- AI-powered journaling summaries
-- End-to-end encryption for privacy
-- Offline support (Progressive Web App)
-- Activity heatmap (GitHub-style consistency tracker)
+**Pages:**
+- `/auth/signup` - User registration
+- `/auth/login` - User login
+- `/dashboard` - Main dashboard (protected)
 
 ---
 
 ## Tech Stack
 
-### Frontend
-- Angular
-- Tailwind CSS
-- RxJS
-- Three.js (for subtle UI enhancements only)
-
----
-
 ### Backend
-- Node.js + Express  
+- **Framework**: Spring Boot 3.2
+- **Language**: Java 17
+- **Security**: Spring Security + JWT (JJWT)
+- **Password Hashing**: BCrypt
+- **Database**: MongoDB
+- **Build Tool**: Maven
 
----
+### Frontend
+- **Framework**: Angular 17
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS
+- **Package Manager**: npm
+- **HTTP Client**: HttpClient
 
 ### Database
-- MongoDB *(flexible schema for entries)*  
+- **MongoDB** - NoSQL database for flexible schema
 
 ---
 
-### Authentication
-- JWT (JSON Web Tokens)
-- bcrypt (password hashing)
+## 📁 Project Structure
 
----
-
-## Architecture
-Frontend (Angular)
-↓
-Backend API (Node.js)
-↓
-Database (MongoDB / PostgreSQL)
-
----
-
-## Project Structure (Frontend)
 ```
-src/
-├── app/
-│ ├── core/ # Auth services, guards
-│ ├── shared/ # Reusable components
-│ ├── features/
-│ │ ├── auth/
-│ │ ├── diary/
-│ │ ├── dashboard/
-│ ├── layouts/
-│ └── app-routing.module.ts
-├── assets/
-└── environments/
+Dev-Diaries/
+├── backend/
+│   ├── src/main/java/com/devdiaries/
+│   │   ├── auth/           (controllers, services, models)
+│   │   ├── config/         (security, CORS)
+│   │   └── common/         (exception handling)
+│   ├── pom.xml
+│   └── README.md
+├── frontend/
+│   ├── src/app/
+│   │   ├── core/           (services, guards, interceptors)
+│   │   ├── features/       (auth, dashboard)
+│   │   └── shared/         (models, components)
+│   ├── package.json
+│   ├── angular.json
+│   └── README.md
+├── PROJECT_SETUP.md        (Detailed setup guide)
+└── README.md              (This file)
 ```
 
 ---
 
-## Project Structure (Backend)
+## 📋 Features Checklist
 
+### Week 1 ✅
+- [x] User registration with validation
+- [x] Secure user login
+- [x] JWT token management
+- [x] Protected dashboard
+- [x] Logout functionality
+- [x] Clean, responsive UI
+- [x] Error handling
+
+### Week 2 (Coming Soon)
+- [ ] Create diary entries
+- [ ] Edit/delete entries
+- [ ] View all entries
+- [ ] Rich text editor
+
+### Week 3 (Coming Soon)
+- [ ] Calendar view
+- [ ] Search functionality
+- [ ] Tag/mood system
+- [ ] Filter entries
+
+### Future Enhancements
+- [ ] Auto-save drafts
+- [ ] Timeline view
+- [ ] Dark mode
+- [ ] OAuth login (Google)
+- [ ] Email verification
+- [ ] Password reset
+- [ ] User profile settings
+
+---
+
+## 🔐 Security Features
+
+- ✅ Password hashing with BCrypt
+- ✅ JWT-based stateless authentication
+- ✅ Secure token storage (localStorage)
+- ✅ CORS protection
+- ✅ Input validation (backend & frontend)
+- ✅ Protected routes with AuthGuard
+- ✅ Automatic token refresh (infrastructure ready)
+
+---
+
+## 🧪 Testing the Application
+
+1. **Visit Frontend**: `http://localhost:4200`
+2. **Sign Up**: Create a new account
+3. **Login**: Use created credentials
+4. **Dashboard**: View your profile and available features
+5. **Logout**: Return to login page
+
+---
+
+## 📚 Documentation
+
+- [Backend Setup Guide](backend/README.md) - Java Spring Boot configuration
+- [Frontend Setup Guide](frontend/README.md) - Angular application setup
+- [Full Project Setup](PROJECT_SETUP.md) - Complete development workflow
+
+---
+
+## 🛠️ Development Commands
+
+### Backend
+```bash
+cd backend
+mvn clean install          # Install dependencies
+mvn spring-boot:run        # Run dev server
+mvn test                   # Run tests
+mvn clean package          # Build production JAR
 ```
-server/
-├── controllers/
-├── models/
-├── routes/
-├── middleware/
-├── services/
-├── config/
-└── server.js
+
+### Frontend
+```bash
+cd frontend
+npm install                # Install dependencies
+npm start                  # Run dev server
+npm run build-prod         # Build for production
+npm test                   # Run tests
 ```
 
 ---
 
-## API Endpoints (Sample)
+## 🌐 API Documentation
 
-### Auth
-- POST /api/auth/register
-- POST /api/auth/login
-- GET /api/auth/profile
+### Authentication Endpoints
 
-### Diary Entries
-- GET /api/entries
-- POST /api/entries
-- GET /api/entries/:id
-- PUT /api/entries/:id
-- DELETE /api/entries/:id
+#### Signup
+```
+POST /api/auth/signup
+Content-Type: application/json
 
----
-
-## Sample Data Model
-
-```json
 {
-  "userId": "12345",
-  "title": "A productive day",
-  "content": "Today I worked on my project...",
-  "date": "2026-04-27",
-  "mood": "happy",
-  "tags": ["work", "learning"],
-  "createdAt": "timestamp",
-  "updatedAt": "timestamp"
+  "email": "user@example.com",
+  "username": "johndoe",
+  "password": "password123",
+  "firstName": "John",
+  "lastName": "Doe"
 }
+
+Response (201 Created):
+{
+  "token": "eyJhbGciOiJIUzUxMiJ9...",
+  "type": "Bearer",
+  "email": "user@example.com",
+  "username": "johndoe",
+  "firstName": "John",
+  "lastName": "Doe",
+  "id": "507f1f77bcf86cd799439011"
+}
+```
+
+#### Login
+```
+POST /api/auth/login
+Content-Type: application/json
+
+{
+  "email": "user@example.com",
+  "password": "password123"
+}
+
+Response (200 OK):
+{
+  "token": "eyJhbGciOiJIUzUxMiJ9...",
+  "type": "Bearer",
+  "email": "user@example.com",
+  "username": "johndoe",
+  "firstName": "John",
+  "lastName": "Doe",
+  "id": "507f1f77bcf86cd799439011"
+}
+```
+
+#### Health Check
+```
+GET /api/auth/health
+
+Response (200 OK):
+"Backend is running"
+```
+
+---
+
+## 🐛 Troubleshooting
+
+### Backend Issues
+- MongoDB not running: `mongod`
+- Port 8080 already in use: Change in `application.properties`
+- Java version: Ensure Java 17+
+
+### Frontend Issues
+- Node modules corrupt: `rm -rf node_modules && npm install`
+- Port 4200 in use: `ng serve --port 4300`
+- Dependencies missing: `npm install` again
+
+### CORS Errors
+- Backend CORS configured for `localhost:4200`
+- Check browser console for actual error
+- Verify backend is running
+
+---
+
+## 📞 Support
+
+For issues or questions:
+1. Check the setup guides
+2. Review error messages in console/logs
+3. Verify MongoDB is running
+4. Ensure both backend and frontend are running
+
+---
+
+## 📝 License
+
+This project is part of the Dev-Diaries application.
+
+---
+
+**Start journaling today! 📔✨**
 ```
 
 ---

@@ -1,0 +1,66 @@
+<div class="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 flex items-center justify-center px-4 sm:px-6 lg:px-8">
+  <div class="max-w-md w-full bg-white rounded-lg shadow-md p-8">
+    <div class="text-center mb-8">
+      <h2 class="text-3xl font-bold text-gray-900">Dev-Diaries</h2>
+      <p class="text-gray-600 mt-2">Your personal journal companion</p>
+    </div>
+
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="space-y-6">
+      <!-- Error Alert -->
+      <div *ngIf="error" class="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded">
+        {{ error }}
+      </div>
+
+      <!-- Email Field -->
+      <div>
+        <label for="email" class="block text-sm font-medium text-gray-700">Email Address</label>
+        <input
+          type="email"
+          id="email"
+          formControlName="email"
+          class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+          placeholder="you@example.com"
+        />
+        <div *ngIf="email?.invalid && email?.touched" class="text-red-500 text-sm mt-1">
+          <span *ngIf="email?.errors?.['required']">Email is required</span>
+          <span *ngIf="email?.errors?.['email']">Please enter a valid email</span>
+        </div>
+      </div>
+
+      <!-- Password Field -->
+      <div>
+        <label for="password" class="block text-sm font-medium text-gray-700">Password</label>
+        <input
+          type="password"
+          id="password"
+          formControlName="password"
+          class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+          placeholder="••••••••"
+        />
+        <div *ngIf="password?.invalid && password?.touched" class="text-red-500 text-sm mt-1">
+          <span *ngIf="password?.errors?.['required']">Password is required</span>
+          <span *ngIf="password?.errors?.['minlength']">Password must be at least 6 characters</span>
+        </div>
+      </div>
+
+      <!-- Submit Button -->
+      <button
+        type="submit"
+        [disabled]="loginForm.invalid || loading"
+        class="w-full bg-indigo-600 text-white py-2 px-4 rounded-md font-medium hover:bg-indigo-700 disabled:bg-gray-400 disabled:cursor-not-allowed transition"
+      >
+        {{ loading ? 'Logging in...' : 'Login' }}
+      </button>
+    </form>
+
+    <!-- Sign up link -->
+    <div class="mt-6 text-center">
+      <p class="text-gray-600 text-sm">
+        Don't have an account?
+        <a routerLink="/auth/signup" class="text-indigo-600 hover:text-indigo-700 font-medium">
+          Sign up here
+        </a>
+      </p>
+    </div>
+  </div>
+</div>
